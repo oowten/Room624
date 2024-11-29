@@ -55,3 +55,5 @@ public class fadescreen : MonoBehaviour
         rend.material.SetColor("_Color", newColor2);
     }    
 }
+
+//github update測試
