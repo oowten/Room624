@@ -21,11 +21,6 @@ MonoBehaviour:
   - {fileID: 2421254090885077688}
   - {fileID: 7380889223176527536}
   - {fileID: 1644270042830828901}
-  - {fileID: -3680016171633316694}
-  - {fileID: 4089009093384201302}
-  - {fileID: 6938441469707720377}
-  - {fileID: 9155297699184371137}
-  - {fileID: 2689919365597295658}
   - {fileID: 5088907525840595179}
   - {fileID: 1557592043489156969}
   - {fileID: -421929371335456309}
@@ -221,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
   m_Name: ValveIndexControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Valve Index Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.valveindex
@@ -241,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -281,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
   m_Name: HTCViveControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: HTC Vive Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.htcvive
@@ -401,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b862ee14fb479fbfe5fffe655d3ed3, type: 3}
   m_Name: MetaQuestTouchProControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Meta Quest Touch Pro Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.metaquestpro
@@ -472,10 +467,6 @@ MonoBehaviour:
   - {fileID: -834111824456689060}
   - {fileID: -2793825661752802721}
   - {fileID: 954442713848951718}
-  - {fileID: -6837541840952914112}
-  - {fileID: 560399813537320593}
-  - {fileID: 6935983337961040630}
-  - {fileID: -317816755230622107}
   - {fileID: -6425683641823391420}
   - {fileID: -3025531223797141564}
   - {fileID: 8569306538654375737}
