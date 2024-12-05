@@ -48,8 +48,8 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _edge: 8.23
-    - _opacity: 0.08
+    - _edge: 9.87
+    - _opacity: -25.59
     - _use: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
