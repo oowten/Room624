@@ -3,7 +3,22 @@ guid: 1853155ee7eff1241bb0521f839c2bbb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phone_back
+    second: {fileID: 2100000, guid: df4e90849b6334e4eab000f53df3af4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phone_frame
+    second: {fileID: 2100000, guid: 25755c8afb88b4a4388e5aa54d1c3ab0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phone_screen
+    second: {fileID: 2100000, guid: 1a394a20b4cad45dab6595b15eb18b10, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
