@@ -3,7 +3,72 @@ guid: 1d0ba2234338d4571843c2c518f0f283
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Bed
+    second: {fileID: 2100000, guid: 43cdc4b0d676347848d064dcc2eecc6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_BedBottom
+    second: {fileID: 2100000, guid: 5717522e16dd14085a00c0056df03d34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Frame
+    second: {fileID: 2100000, guid: 5b3950e76c6464710912e44b4aed751d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corrider_buttom
+    second: {fileID: 2100000, guid: f24d74354658e4723978dc6e0638c39b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtain_black
+    second: {fileID: 2100000, guid: e5ab06b303a6f48e7a37b830cdc0cd15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtain_metal
+    second: {fileID: 2100000, guid: 8bec17ff048ed4c0b8d1961c563a946e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtain_white
+    second: {fileID: 2100000, guid: b314ad289c0144300a1336f2c313d7c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: desk
+    second: {fileID: 2100000, guid: 7f527fdb62fd7454983bcbcbb2aad1d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door622
+    second: {fileID: 2100000, guid: d68a1273a21fa4b318f3a5f8ddf8fdea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door623
+    second: {fileID: 2100000, guid: 3f5cb0e8c2474405183477edf07d7cd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door625
+    second: {fileID: 2100000, guid: e4345ef976f584ae58faf9cce154bb55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door626
+    second: {fileID: 2100000, guid: 9d064aa3441464484b58f90c2834a124, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door627
+    second: {fileID: 2100000, guid: 0b021a97cfd194200bd93ee2abd84b05, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
