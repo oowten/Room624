@@ -29,6 +29,26 @@ MonoBehaviour:
   - {fileID: 2931643516990174070}
   m_renderMode: 1
   m_depthSubmissionMode: 0
+--- !u!114 &-8762107762304204120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5019471fb2174e5c852ecd4047163007, type: 3}
+  m_Name: HandInteractionProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Hand Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.handinteraction
+  openxrExtensionStrings: XR_EXT_hand_interaction
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-8723716677448233365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +109,39 @@ MonoBehaviour:
   company: 
   priority: 0
   required: 0
+--- !u!114 &-7751763188658151971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5b5af5107e35a43818d5411328bfc3, type: 3}
+  m_Name: DPadInteraction Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: D-Pad Binding
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.dpadinteraction
+  openxrExtensionStrings: XR_KHR_binding_modification XR_EXT_dpad_binding
+  company: Unity
+  priority: 0
+  required: 0
+  forceThresholdLeft: 0.5
+  forceThresholdReleaseLeft: 0.4
+  centerRegionLeft: 0.5
+  wedgeAngleLeft: 1.5707964
+  isStickyLeft: 0
+  forceThresholdRight: 0.5
+  forceThresholdReleaseRight: 0.4
+  centerRegionRight: 0.5
+  wedgeAngleRight: 1.5707964
+  isStickyRight: 0
+  extensionStrings:
+  - XR_KHR_binding_modification
+  - XR_EXT_dpad_binding
 --- !u!114 &-7563034943472425861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +214,66 @@ MonoBehaviour:
   openxrExtensionStrings: XR_META_foveation_eye_tracked XR_FB_eye_tracking_social
     XR_META_vulkan_swapchain_create_info
   company: Meta
+  priority: 0
+  required: 0
+--- !u!114 &-6543191615742628226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5315f812f023cf4ebf26f7e5d2d70f2, type: 3}
+  m_Name: HPReverbG2ControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HP Reverb G2 Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.hpreverb
+  openxrExtensionStrings: XR_EXT_hp_mixed_reality_controller
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &-6534299595181212360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761fdd4502cb7a84e9ec7a2b24f33f37, type: 3}
+  m_Name: MicrosoftMotionControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Microsoft Motion Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.microsoftmotioncontroller
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &-6519617145186655207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
+  m_Name: HTCViveControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HTC Vive Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.htcvive
+  openxrExtensionStrings: 
+  company: Unity
   priority: 0
   required: 0
 --- !u!114 &-6425683641823391420
@@ -370,6 +483,7 @@ MonoBehaviour:
   m_Name: Metro
   m_EditorClassIdentifier: 
   features:
+
   - {fileID: 8590216760504547050}
   - {fileID: 2330805477445303738}
   - {fileID: 5038005842036458019}
@@ -385,6 +499,7 @@ MonoBehaviour:
   - {fileID: -4915440132601524908}
   - {fileID: -1284507284059505693}
   - {fileID: 5129944010591153075}
+
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &-3033376100466774626
@@ -443,6 +558,26 @@ MonoBehaviour:
   nameUi: Khronos Simple Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &-2603584860963407124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
+  m_Name: ValveIndexControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Valve Index Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.valveindex
   openxrExtensionStrings: 
   company: Unity
   priority: 0
@@ -629,7 +764,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-714394121115950908
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,6 +775,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 2a24be4b5ebfe5f4d8ed1de9b25cb7aa, type: 3}
   m_Name: HandCommonPosesInteraction Metro
   m_EditorClassIdentifier: 
@@ -649,6 +787,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-421929371335456309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +810,26 @@ MonoBehaviour:
   required: 0
   targetQuest: 1
   targetQuest2: 1
+--- !u!114 &-406363538653548024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
+  m_Name: EyeGazeInteraction Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Eye Gaze Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.eyetracking
+  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-317816755230622107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +949,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &1224676803437797782
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -799,6 +960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: e5315f812f023cf4ebf26f7e5d2d70f2, type: 3}
   m_Name: HPReverbG2ControllerProfile Metro
   m_EditorClassIdentifier: 
@@ -807,6 +969,7 @@ MonoBehaviour:
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.hpreverb
   openxrExtensionStrings: XR_EXT_hp_mixed_reality_controller
+
   company: Unity
   priority: 0
   required: 0
@@ -924,7 +1087,9 @@ MonoBehaviour:
   required: 0
   cacheSize: 1048576
   perThreadCacheSize: 51200
+
 --- !u!114 &2330805477445303738
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -933,6 +1098,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 9c5b5af5107e35a43818d5411328bfc3, type: 3}
   m_Name: DPadInteraction Metro
   m_EditorClassIdentifier: 
@@ -957,6 +1123,7 @@ MonoBehaviour:
   extensionStrings:
   - XR_KHR_binding_modification
   - XR_EXT_dpad_binding
+
 --- !u!114 &2421254090885077688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1286,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &3594232432829025461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
+  m_Name: OculusTouchControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Oculus Touch Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.oculustouch
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &3694140136172839828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1421,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &5038005842036458019
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1243,6 +1432,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
   m_Name: EyeGazeInteraction Metro
   m_EditorClassIdentifier: 
@@ -1251,6 +1441,7 @@ MonoBehaviour:
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.eyetracking
   openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+
   company: Unity
   priority: 0
   required: 0
@@ -1274,7 +1465,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &5129944010591153075
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1283,6 +1476,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
   m_Name: ValveIndexControllerProfile Metro
   m_EditorClassIdentifier: 
@@ -1291,6 +1485,7 @@ MonoBehaviour:
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.valveindex
   openxrExtensionStrings: 
+
   company: Unity
   priority: 0
   required: 0
@@ -1528,7 +1723,9 @@ MonoBehaviour:
   priority: 0
   required: 0
   ignoreValidationErrors: 0
+
 --- !u!114 &8590216760504547050
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1548,6 +1745,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &8750194281797724893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1766,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &8776672296995721102
 MonoBehaviour:
   m_ObjectHideFlags: 0

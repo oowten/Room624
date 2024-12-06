@@ -1,16 +1,21 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class DissolvingController : MonoBehaviour
 {
     public SkinnedMeshRenderer skinnedMesh;
-    public VisualEffect VFXGraph;
+    public ParticleSystem particleSystem; // 粒子系統
     public float dissolveRate = 0.0125f;
     public float refreshRate = 0.025f;
     private Material[] skinnedMaterials;
 
     private bool isDissolving = false;
+
+    private ParticleSystem.EmissionModule emissionModule; // 粒子發射設定
+
+    [Header("可調整的粒子數量")]
+    [Range(1, 1000)] // 設定範圍，這樣在 Inspector 中可調整
+    public float particleCount = 100f; // 粒子數量
 
     void Start()
     {
@@ -18,7 +23,7 @@ public class DissolvingController : MonoBehaviour
         {
             skinnedMaterials = skinnedMesh.materials;
 
-            // 建立材質的獨立實例，確保每個物件都有獨立的dissolve控制
+            // 建立材質的獨立實例，確保每個物件都有獨立的 dissolve 控制
             for (int i = 0; i < skinnedMaterials.Length; i++)
             {
                 skinnedMaterials[i] = new Material(skinnedMaterials[i]);
@@ -26,17 +31,23 @@ public class DissolvingController : MonoBehaviour
             skinnedMesh.materials = skinnedMaterials;
         }
 
-        // 停止粒子效果，避免進入Play Mode時自動播放
-        if (VFXGraph != null)
+        // 停止粒子效果，避免進入 Play Mode 時自動播放
+        if (particleSystem != null)
         {
-            VFXGraph.Stop();
+            particleSystem.Stop();
+            emissionModule = particleSystem.emission; // 取得發射模塊
         }
     }
 
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDissolving)
+        // Debug.Log 輸出訊息，檢查進入觸發區域的物體
+        Debug.Log("物體進入觸發區域: " + other.gameObject.name);
+
+        // 檢查是否進入箱子的觸發區域，並且物體是需要 dissolve 的
+        if (!isDissolving && other.CompareTag("Dissolvable"))
         {
+            Debug.Log("開始執行 Dissolve 和粒子效果");
             StartCoroutine(DissolveCo());
         }
     }
@@ -45,10 +56,14 @@ public class DissolvingController : MonoBehaviour
     {
         isDissolving = true;
 
-        // 在開始dissolve前播放粒子效果
-        if (VFXGraph != null)
+        // 在開始 dissolve 前播放粒子效果
+        if (particleSystem != null)
         {
-            VFXGraph.Play();
+            Debug.Log("播放粒子效果");
+            particleSystem.Play(); // 播放粒子系統
+
+            // 設定粒子發射速率，根據 particleCount 調整
+            emissionModule.rateOverTime = particleCount; // 根據設定的粒子數量調整發射速率
         }
 
         if (skinnedMaterials.Length > 0)
@@ -60,16 +75,19 @@ public class DissolvingController : MonoBehaviour
                 counter += dissolveRate;
                 for (int i = 0; i < skinnedMaterials.Length; i++)
                 {
-                    skinnedMaterials[i].SetFloat("_DissolveAmount", counter);
+                    skinnedMaterials[i].SetFloat("_DissolveAmount", counter); // 控制 dissolve 的進度
                 }
-                yield return new WaitForSeconds(refreshRate);
+                yield return new WaitForSeconds(refreshRate); // 設定刷新速度
             }
         }
 
-        // 在dissolve完成後停止粒子效果
-        if (VFXGraph != null)
+        // 在 dissolve 完成後停止粒子效果
+        if (particleSystem != null)
         {
-            VFXGraph.Stop();
+            // 停止粒子系統
+            emissionModule.rateOverTime = 0f; // 停止發射粒子
+            Debug.Log("停止粒子效果");
+            particleSystem.Stop();
         }
 
         isDissolving = false;
