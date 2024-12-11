@@ -14,16 +14,22 @@ public class DissolvingController : MonoBehaviour
     private ParticleSystem.EmissionModule emissionModule; // 粒子發射設定
 
     [Header("可調整的粒子數量")]
-    [Range(1, 1000)] // 設定範圍，這樣在 Inspector 中可調整
+    [Range(1, 1000)]
     public float particleCount = 100f; // 粒子數量
+
+    [Header("動畫相關設定")]
+    public Animator targetAnimator; // 綁定的 Animator
+    public string triggerName = "FlyyyTrigger"; // 觸發動畫的 Trigger 名稱
+    public float dissolveDelay = 2f; // 動畫播放後延遲的時間
 
     void Start()
     {
+        // 初始化材質
         if (skinnedMesh != null)
         {
             skinnedMaterials = skinnedMesh.materials;
 
-            // 建立材質的獨立實例，確保每個物件都有獨立的 dissolve 控制
+            // 建立材質的獨立實例
             for (int i = 0; i < skinnedMaterials.Length; i++)
             {
                 skinnedMaterials[i] = new Material(skinnedMaterials[i]);
@@ -31,41 +37,68 @@ public class DissolvingController : MonoBehaviour
             skinnedMesh.materials = skinnedMaterials;
         }
 
-        // 停止粒子效果，避免進入 Play Mode 時自動播放
+        // 停止粒子效果
         if (particleSystem != null)
         {
             particleSystem.Stop();
-            emissionModule = particleSystem.emission; // 取得發射模塊
+            emissionModule = particleSystem.emission;
+        }
+
+        // 檢查是否有綁定 Animator
+        if (targetAnimator == null)
+        {
+            Debug.LogError("未綁定 Animator！請在 Inspector 中將目標 GameObject 的 Animator 拖入。");
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Debug.Log 輸出訊息，檢查進入觸發區域的物體
         Debug.Log("物體進入觸發區域: " + other.gameObject.name);
 
-        // 檢查是否進入箱子的觸發區域，並且物體是需要 dissolve 的
-        if (!isDissolving && other.CompareTag("Dissolvable"))
+        // 如果進入的物件具有標籤 "Able"
+        if (!isDissolving && other.CompareTag("Able"))
         {
-            Debug.Log("開始執行 Dissolve 和粒子效果");
-            StartCoroutine(DissolveCo());
+            Debug.Log("開始播放動畫和執行延遲效果");
+
+            // 播放動畫
+            if (targetAnimator != null)
+            {
+                Debug.Log("播放 Flyyy 動畫");
+                if (targetAnimator.HasParameterOfType(triggerName, AnimatorControllerParameterType.Trigger))
+                {
+                    targetAnimator.SetTrigger(triggerName);
+                }
+                else
+                {
+                    Debug.LogError($"Animator 中缺少名為 {triggerName} 的 Trigger 參數！");
+                }
+            }
+            else
+            {
+                Debug.LogError("物件缺少 Animator 組件，無法播放動畫！");
+            }
+
+            // 開始延遲後的 Dissolve 效果
+            StartCoroutine(DelayedDissolve());
         }
     }
 
-    IEnumerator DissolveCo()
+    IEnumerator DelayedDissolve()
     {
         isDissolving = true;
 
-        // 在開始 dissolve 前播放粒子效果
+        // 等待指定的延遲時間
+        yield return new WaitForSeconds(dissolveDelay);
+
+        // 播放粒子效果
         if (particleSystem != null)
         {
             Debug.Log("播放粒子效果");
-            particleSystem.Play(); // 播放粒子系統
-
-            // 設定粒子發射速率，根據 particleCount 調整
-            emissionModule.rateOverTime = particleCount; // 根據設定的粒子數量調整發射速率
+            particleSystem.Play();
+            emissionModule.rateOverTime = particleCount;
         }
 
+        // 開始 Dissolve 效果
         if (skinnedMaterials.Length > 0)
         {
             float counter = 0;
@@ -75,21 +108,34 @@ public class DissolvingController : MonoBehaviour
                 counter += dissolveRate;
                 for (int i = 0; i < skinnedMaterials.Length; i++)
                 {
-                    skinnedMaterials[i].SetFloat("_DissolveAmount", counter); // 控制 dissolve 的進度
+                    skinnedMaterials[i].SetFloat("_DissolveAmount", counter);
                 }
-                yield return new WaitForSeconds(refreshRate); // 設定刷新速度
+                yield return new WaitForSeconds(refreshRate);
             }
         }
 
-        // 在 dissolve 完成後停止粒子效果
+        // 停止粒子效果
         if (particleSystem != null)
         {
-            // 停止粒子系統
-            emissionModule.rateOverTime = 0f; // 停止發射粒子
+            emissionModule.rateOverTime = 0f;
             Debug.Log("停止粒子效果");
             particleSystem.Stop();
         }
 
         isDissolving = false;
+    }
+}
+
+// 擴展方法檢查 Animator 參數
+public static class AnimatorExtensions
+{
+    public static bool HasParameterOfType(this Animator animator, string paramName, AnimatorControllerParameterType type)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName && param.type == type)
+                return true;
+        }
+        return false;
     }
 }

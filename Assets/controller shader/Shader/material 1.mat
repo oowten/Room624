@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material
+  m_Name: material 1
   m_Shader: {fileID: -6465566751694194690, guid: 8a18d3ee11e7ac945bc7b4b4bc53245c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -40,7 +40,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 0ef9e4a26a3295e4daa794397fe9e5ee, type: 3}
+        m_Texture: {fileID: 2800000, guid: 24306f6dbcc754747836f00ff391b820, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
