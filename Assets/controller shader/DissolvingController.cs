@@ -84,6 +84,9 @@ public class DissolvingController : MonoBehaviour
 
             // 開始延遲後的 Dissolve 效果
             StartCoroutine(DelayedDissolve());
+
+            // 延遲後讓進入的 Able 物件消失
+            StartCoroutine(DelayedDestroy(other.gameObject, dissolveDelay));
         }
     }
 
@@ -134,6 +137,19 @@ public class DissolvingController : MonoBehaviour
         sceneTransitionManager.TransitionToScene("YourTargetSceneName");
 
         isDissolving = false;
+    }
+
+    IEnumerator DelayedDestroy(GameObject targetObject, float delay)
+    {
+        // 等待指定的時間
+        yield return new WaitForSeconds(delay);
+
+        // 刪除進入的物件
+        if (targetObject != null)
+        {
+            Debug.Log($"刪除物件: {targetObject.name}");
+            Destroy(targetObject);
+        }
     }
 }
 
