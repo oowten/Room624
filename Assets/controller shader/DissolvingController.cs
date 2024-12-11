@@ -1,5 +1,6 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement; // 用於場景轉場
+using System.Collections;
 
 public class DissolvingController : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class DissolvingController : MonoBehaviour
     public Animator targetAnimator; // 綁定的 Animator
     public string triggerName = "FlyyyTrigger"; // 觸發動畫的 Trigger 名稱
     public float dissolveDelay = 2f; // 動畫播放後延遲的時間
+
+    [Header("轉場管理器")]
+    public SceneTransitionManager sceneTransitionManager; // 轉場管理器引用
 
     void Start()
     {
@@ -121,6 +125,13 @@ public class DissolvingController : MonoBehaviour
             Debug.Log("停止粒子效果");
             particleSystem.Stop();
         }
+
+        // 延遲幾秒後轉場
+        float transitionDelay = 2f; // 設定轉場延遲的時間
+        yield return new WaitForSeconds(transitionDelay);
+
+        // 開始轉場
+        sceneTransitionManager.TransitionToScene("YourTargetSceneName");
 
         isDissolving = false;
     }
