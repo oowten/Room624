@@ -5,33 +5,33 @@ using UnityEngine.Video;
 public class SceneController : MonoBehaviour
 {
     [Header("Spotlight Settings")]
-    public Renderer spotlightRenderer; // »E¥ú¿Oª«¥óªº Renderer
-    public string shaderOpacityProperty = "_opacity"; // Shader ¤¤±±¨î³z©ú«×ªºÄÝ©Ê¦WºÙ
-    public float spotlightFadeDuration = 3f; // »E¥ú¿O²H¤J®É¶¡
+    public Renderer spotlightRenderer; // ï¿½Eï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ Renderer
+    public string shaderOpacityProperty = "_opacity"; // Shader ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½ï¿½×ªï¿½ï¿½Ý©Ê¦Wï¿½ï¿½
+    public float spotlightFadeDuration = 3f; // ï¿½Eï¿½ï¿½ï¿½Oï¿½Hï¿½Jï¿½É¶ï¿½
 
     [Header("Video Settings")]
-    public GameObject videoScreen; // ¸j©w¼v¤ù§÷½èªºª«¥ó
-    public VideoPlayer videoPlayer; // VideoPlayer ²Õ¥ó
-    public float videoFadeDuration = 2f; // ¼v¤ù²H¤J²H¥X®É¶¡
+    public GameObject videoScreen; // ï¿½jï¿½wï¿½vï¿½ï¿½ï¿½ï¿½ï¿½èªºï¿½ï¿½ï¿½ï¿½
+    public VideoPlayer videoPlayer; // VideoPlayer ï¿½Õ¥ï¿½
+    public float videoFadeDuration = 2f; // ï¿½vï¿½ï¿½ï¿½Hï¿½Jï¿½Hï¿½Xï¿½É¶ï¿½
 
     [Header("Trash Bin Settings")]
-    public Animator trashBinAnimator; // ©U§£±í°Êµe
+    public Animator trashBinAnimator; // ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½Êµe
 
     [Header("Delays Between Steps")]
-    public float delayAfterSpotlight = 2f; // »E¥ú¿O§¹¦¨«áªº©µ¿ð
-    public float delayAfterVideoStart = 2f; // ¼v¤ù¼½©ñ¶}©l«áªº©µ¿ð
-    public float delayAfterVideoEnd = 2f; // ¼v¤ù¼½©ñµ²§ô«áªº©µ¿ð
+    public float delayAfterSpotlight = 2f; // ï¿½Eï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½áªºï¿½ï¿½ï¿½ï¿½
+    public float delayAfterVideoStart = 2f; // ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½lï¿½áªºï¿½ï¿½ï¿½ï¿½
+    public float delayAfterVideoEnd = 2f; // ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ñµ²§ï¿½ï¿½áªºï¿½ï¿½ï¿½ï¿½
 
-    private Material videoMaterial; // ¼v¤ùªº§÷½è
-    private bool hasPlayed = false; // ±±¨î¬O§_¤w¸g¼½©ñ¹L¬yµ{
+    private Material videoMaterial; // ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private bool hasPlayed = false; // ï¿½ï¿½ï¿½ï¿½Oï¿½_ï¿½wï¿½gï¿½ï¿½ï¿½ï¿½Lï¿½yï¿½{
 
     void Start()
     {
-        // ªì©l¤Æ§÷½è
+        // ï¿½ï¿½lï¿½Æ§ï¿½ï¿½ï¿½
         videoMaterial = videoScreen.GetComponent<Renderer>().material;
-        SetVideoAlpha(0); // ³]¸mªì©l³z©ú«×¬° 0
-        videoScreen.SetActive(false); // ÁôÂÃ¼v¤ù¿Ã¹õ
-        videoPlayer.prepareCompleted += OnVideoPrepared; // µù¥U¼v¤ù·Ç³Æ§¹¦¨ªº¦^½Õ
+        SetVideoAlpha(0); // ï¿½]ï¿½mï¿½ï¿½lï¿½zï¿½ï¿½ï¿½×¬ï¿½ 0
+        videoScreen.SetActive(false); // ï¿½ï¿½ï¿½Ã¼vï¿½ï¿½ï¿½Ã¹ï¿½
+        videoPlayer.prepareCompleted += OnVideoPrepared; // ï¿½ï¿½ï¿½Uï¿½vï¿½ï¿½ï¿½Ç³Æ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½ï¿½
     }
 
     void Update()
@@ -39,38 +39,38 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !hasPlayed)
         {
             hasPlayed = true;
-            StartCoroutine(SceneSequence()); // ¶}©l¾ã­Ó¬yµ{
+            StartCoroutine(SceneSequence()); // ï¿½}ï¿½lï¿½ï¿½Ó¬yï¿½{
         }
     }
 
     private IEnumerator SceneSequence()
     {
-        // 1. »E¥ú¿O³z©ú«×³vº¥¤W¤É
-        yield return StartCoroutine(FadeSpotlight(0, 0.17f, spotlightFadeDuration));
+        // 1. ï¿½Eï¿½ï¿½ï¿½Oï¿½zï¿½ï¿½ï¿½×³vï¿½ï¿½ï¿½Wï¿½ï¿½
+        yield return StartCoroutine(FadeSpotlight(0, 0.5f, spotlightFadeDuration));
         yield return new WaitForSeconds(delayAfterSpotlight);
 
-        // 2. Åã¥Ü¼v¤ù¿Ã¹õ¨Ã·Ç³Æ¼½©ñ
+        // 2. ï¿½ï¿½Ü¼vï¿½ï¿½ï¿½Ã¹ï¿½ï¿½Ã·Ç³Æ¼ï¿½ï¿½ï¿½
         videoScreen.SetActive(true);
-        videoPlayer.Prepare(); // ¶}©l·Ç³Æ¼v¤ù
-        yield return new WaitUntil(() => videoPlayer.isPrepared); // µ¥«Ý¼v¤ù·Ç³Æ§¹¦¨
+        videoPlayer.Prepare(); // ï¿½}ï¿½lï¿½Ç³Æ¼vï¿½ï¿½
+        yield return new WaitUntil(() => videoPlayer.isPrepared); // ï¿½ï¿½ï¿½Ý¼vï¿½ï¿½ï¿½Ç³Æ§ï¿½ï¿½ï¿½
 
-        // ²H¤J¼v¤ù¿Ã¹õ
+        // ï¿½Hï¿½Jï¿½vï¿½ï¿½ï¿½Ã¹ï¿½
         yield return StartCoroutine(FadeVideoAlpha(0, 1, videoFadeDuration));
-        videoPlayer.Play(); // ¶}©l¼½©ñ¼v¤ù
+        videoPlayer.Play(); // ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½vï¿½ï¿½
         yield return new WaitForSeconds(delayAfterVideoStart);
 
-        // µ¥«Ý¼v¤ù¼½©ñ§¹¦¨
+        // ï¿½ï¿½ï¿½Ý¼vï¿½ï¿½ï¿½ï¿½ï¿½ñ§¹¦ï¿½
         while (videoPlayer.isPlaying)
         {
             yield return null;
         }
         yield return new WaitForSeconds(delayAfterVideoEnd);
 
-        // ²H¥X¼v¤ù¿Ã¹õ
+        // ï¿½Hï¿½Xï¿½vï¿½ï¿½ï¿½Ã¹ï¿½
         yield return StartCoroutine(FadeVideoAlpha(1, 0, videoFadeDuration));
-        videoScreen.SetActive(false); // ÁôÂÃ¼v¤ù¿Ã¹õ
+        videoScreen.SetActive(false); // ï¿½ï¿½ï¿½Ã¼vï¿½ï¿½ï¿½Ã¹ï¿½
 
-        // 3. ¼½©ñ©U§£±í°Êµe
+        // 3. ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½Êµe
         trashBinAnimator.SetBool("isOpen", true);
     }
 
@@ -112,10 +112,10 @@ public class SceneController : MonoBehaviour
     {
         if (videoMaterial != null)
         {
-            // ½T«O alpha ­È¦b½d³ò¤º
+            // ï¿½Tï¿½O alpha ï¿½È¦bï¿½dï¿½ï¿½
             alpha = Mathf.Clamp01(alpha);
 
-            // ¨ú±o§÷½èªºÃC¦â¨Ã§ó·s³z©ú«×
+            // ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½èªºï¿½Cï¿½ï¿½Ã§ï¿½sï¿½zï¿½ï¿½ï¿½ï¿½
             Color color = videoMaterial.GetColor("_Color");
             color.a = alpha;
             videoMaterial.SetColor("_Color", color);
