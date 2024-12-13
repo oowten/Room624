@@ -557,13 +557,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217404553}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.8486441, y: -0, z: -0, w: 0.5289644}
+  m_LocalRotation: {x: 0.96601164, y: -0, z: -0, w: 0.25849852}
   m_LocalPosition: {x: 0.13, y: 15.59, z: 24.67}
   m_LocalScale: {x: 2.54, y: 5.277104, z: 4.777994}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 116.129, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 150.038, y: 0, z: 0}
 --- !u!95 &238048565 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5921899144536487390, guid: 2ab2bb80c5d571041b3376abe177dd4c,
@@ -3371,7 +3371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!328 &2057294306
 VideoPlayer:
   m_ObjectHideFlags: 0
