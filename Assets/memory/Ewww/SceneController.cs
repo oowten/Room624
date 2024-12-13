@@ -2,36 +2,44 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
+
 public class SceneController : MonoBehaviour
 {
     [Header("Spotlight Settings")]
-    public Renderer spotlightRenderer; // »E¥ú¿Oª«¥óªº Renderer
-    public string shaderOpacityProperty = "_opacity"; // Shader ¤¤±±¨î³z©ú«×ªºÄİ©Ê¦WºÙ
-    public float spotlightFadeDuration = 3f; // »E¥ú¿O²H¤J®É¶¡
+    public Renderer spotlightRenderer1; // ç¬¬ä¸€å€‹ spotlight çš„ Renderer
+    public Renderer spotlightRenderer2; // ç¬¬äºŒå€‹ spotlight çš„ Renderer
+    public string shaderOpacityProperty = "_opacity"; // Shader çš„é€æ˜å±¬æ€§åç¨±
+    public float spotlightFadeDuration = 3f; // Spotlight æ·¡å…¥/æ·¡å‡ºæ™‚é–“
 
     [Header("Video Settings")]
-    public GameObject videoScreen; // ¸j©w¼v¤ù§÷½èªºª«¥ó
-    public VideoPlayer videoPlayer; // VideoPlayer ²Õ¥ó
-    public float videoFadeDuration = 2f; // ¼v¤ù²H¤J²H¥X®É¶¡
+    public GameObject videoScreen; // ç”¨æ–¼æ’­æ”¾å½±ç‰‡çš„ç‰©ä»¶
+    public VideoPlayer videoPlayer; // VideoPlayer çµ„ä»¶
+    public float videoFadeDuration = 2f; // å½±ç‰‡æ·¡å…¥/æ·¡å‡ºæ™‚é–“
 
     [Header("Trash Bin Settings")]
-    public Animator trashBinAnimator; // ©U§£±í°Êµe
+    public Animator trashBinAnimator; // åƒåœ¾æ¡¶å‹•ç•«
 
     [Header("Delays Between Steps")]
-    public float delayAfterSpotlight = 2f; // »E¥ú¿O§¹¦¨«áªº©µ¿ğ
-    public float delayAfterVideoStart = 2f; // ¼v¤ù¼½©ñ¶}©l«áªº©µ¿ğ
-    public float delayAfterVideoEnd = 2f; // ¼v¤ù¼½©ñµ²§ô«áªº©µ¿ğ
+    public float delayAfterSpotlight = 2f; // ç¬¬ä¸€å€‹ spotlight å‡ºç¾å¾Œçš„å»¶é²
+    public float delayAfterVideoStart = 2f; // å½±ç‰‡é–‹å§‹æ’­æ”¾å¾Œçš„å»¶é²
+    public float delayAfterVideoEnd = 2f; // å½±ç‰‡çµæŸå¾Œçš„å»¶é²
+    public float delayFor1Spotlight = 2f;
+    public float delayForSecondSpotlight = 1f; // ç¬¬äºŒå€‹ spotlight å‡ºç¾çš„å»¶é²
 
-    private Material videoMaterial; // ¼v¤ùªº§÷½è
-    private bool hasPlayed = false; // ±±¨î¬O§_¤w¸g¼½©ñ¹L¬yµ{
+    private Material videoMaterial; // å½±ç‰‡æè³ª
+    private bool hasPlayed = false; // æ˜¯å¦å·²ç¶“åŸ·è¡Œéå ´æ™¯åºåˆ—
 
     void Start()
     {
-        // ªì©l¤Æ§÷½è
+        // åˆå§‹åŒ–
         videoMaterial = videoScreen.GetComponent<Renderer>().material;
-        SetVideoAlpha(0); // ³]¸mªì©l³z©ú«×¬° 0
-        videoScreen.SetActive(false); // ÁôÂÃ¼v¤ù¿Ã¹õ
-        videoPlayer.prepareCompleted += OnVideoPrepared; // µù¥U¼v¤ù·Ç³Æ§¹¦¨ªº¦^½Õ
+        SetVideoAlpha(0); // è¨­ç½®å½±ç‰‡åˆå§‹é€æ˜åº¦ç‚º 0
+        videoScreen.SetActive(false); // éš±è—å½±ç‰‡ç‰©ä»¶
+        videoPlayer.prepareCompleted += OnVideoPrepared; // è¨»å†Šå½±ç‰‡æº–å‚™å®Œæˆçš„äº‹ä»¶
+
+        // ç¢ºä¿ spotlight åˆå§‹é€æ˜åº¦ç‚º 0
+        SetSpotlightOpacity(spotlightRenderer1, 0);
+        SetSpotlightOpacity(spotlightRenderer2, 0);
     }
 
     void Update()
@@ -39,59 +47,66 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !hasPlayed)
         {
             hasPlayed = true;
-            StartCoroutine(SceneSequence()); // ¶}©l¾ã­Ó¬yµ{
+            StartCoroutine(SceneSequence()); // é–‹å§‹åŸ·è¡Œå ´æ™¯åºåˆ—
         }
     }
 
     private IEnumerator SceneSequence()
     {
-        // 1. »E¥ú¿O³z©ú«×³vº¥¤W¤É
-        yield return StartCoroutine(FadeSpotlight(0, 0.17f, spotlightFadeDuration));
+        // 1. ç¬¬ä¸€å€‹ spotlight æ·¡å…¥
+        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0, 0.07f, spotlightFadeDuration));
         yield return new WaitForSeconds(delayAfterSpotlight);
 
-        // 2. Åã¥Ü¼v¤ù¿Ã¹õ¨Ã·Ç³Æ¼½©ñ
+        // 2. é¡¯ç¤ºå½±ç‰‡ç•«é¢ä¸¦æº–å‚™æ’­æ”¾
         videoScreen.SetActive(true);
-        videoPlayer.Prepare(); // ¶}©l·Ç³Æ¼v¤ù
-        yield return new WaitUntil(() => videoPlayer.isPrepared); // µ¥«İ¼v¤ù·Ç³Æ§¹¦¨
+        videoPlayer.Prepare(); // é–‹å§‹æº–å‚™å½±ç‰‡
+        yield return new WaitUntil(() => videoPlayer.isPrepared); // ç­‰å¾…å½±ç‰‡æº–å‚™å®Œæˆ
 
-        // ²H¤J¼v¤ù¿Ã¹õ
+        // æ·¡å…¥å½±ç‰‡
         yield return StartCoroutine(FadeVideoAlpha(0, 1, videoFadeDuration));
-        videoPlayer.Play(); // ¶}©l¼½©ñ¼v¤ù
+        videoPlayer.Play(); // é–‹å§‹æ’­æ”¾å½±ç‰‡
         yield return new WaitForSeconds(delayAfterVideoStart);
 
-        // µ¥«İ¼v¤ù¼½©ñ§¹¦¨
+        // 3. ç¬¬ä¸€å€‹ spotlight æ·¡å‡º
+        yield return new WaitForSeconds(delayFor1Spotlight);
+        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0.07f, 0, spotlightFadeDuration));
+
+        // 5. ç­‰å¾…å½±ç‰‡æ’­æ”¾çµæŸ
         while (videoPlayer.isPlaying)
         {
             yield return null;
         }
         yield return new WaitForSeconds(delayAfterVideoEnd);
 
-        // ²H¥X¼v¤ù¿Ã¹õ
+        // æ·¡å‡ºå½±ç‰‡
         yield return StartCoroutine(FadeVideoAlpha(1, 0, videoFadeDuration));
-        videoScreen.SetActive(false); // ÁôÂÃ¼v¤ù¿Ã¹õ
+        videoScreen.SetActive(false); // éš±è—å½±ç‰‡ç‰©ä»¶
+        // 4. å»¶é²ä¸€ç§’å¾Œè®“ç¬¬äºŒå€‹ spotlight æ·¡å…¥
+        yield return new WaitForSeconds(delayForSecondSpotlight);
+        yield return StartCoroutine(FadeSpotlight(spotlightRenderer2, 0, 0.07f, spotlightFadeDuration));
 
-        // 3. ¼½©ñ©U§£±í°Êµe
+        // 7. è§¸ç™¼åƒåœ¾æ¡¶å‹•ç•«
         trashBinAnimator.SetBool("isOpen", true);
     }
 
-    private IEnumerator FadeSpotlight(float start, float end, float duration)
+    private IEnumerator FadeSpotlight(Renderer spotlight, float start, float end, float duration)
     {
         float elapsed = 0;
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float opacity = Mathf.Lerp(start, end, elapsed / duration);
-            SetSpotlightOpacity(opacity);
+            SetSpotlightOpacity(spotlight, opacity);
             yield return null;
         }
-        SetSpotlightOpacity(end);
+        SetSpotlightOpacity(spotlight, end);
     }
 
-    private void SetSpotlightOpacity(float opacity)
+    private void SetSpotlightOpacity(Renderer spotlight, float opacity)
     {
-        if (spotlightRenderer.material.HasProperty(shaderOpacityProperty))
+        if (spotlight.material.HasProperty(shaderOpacityProperty))
         {
-            spotlightRenderer.material.SetFloat(shaderOpacityProperty, opacity);
+            spotlight.material.SetFloat(shaderOpacityProperty, opacity);
         }
     }
 
@@ -112,10 +127,10 @@ public class SceneController : MonoBehaviour
     {
         if (videoMaterial != null)
         {
-            // ½T«O alpha ­È¦b½d³ò¤º
+            // ç¢ºä¿é€æ˜åº¦åœ¨åˆæ³•ç¯„åœå…§
             alpha = Mathf.Clamp01(alpha);
 
-            // ¨ú±o§÷½èªºÃC¦â¨Ã§ó·s³z©ú«×
+            // æ›´æ–°æè³ªçš„é¡è‰²é€æ˜åº¦
             Color color = videoMaterial.GetColor("_Color");
             color.a = alpha;
             videoMaterial.SetColor("_Color", color);
