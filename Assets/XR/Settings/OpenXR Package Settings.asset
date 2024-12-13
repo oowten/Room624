@@ -1,6 +1,8 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+
 --- !u!114 &-8451146957929633732
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +131,9 @@ MonoBehaviour:
   nameUi: Hand Tracking Subsystem
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.handtracking
+
   openxrExtensionStrings: XR_EXT_hand_tracking
+
   company: Unity
   priority: -100
   required: 0
@@ -142,39 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: Standalone
-  m_EditorClassIdentifier: 
-  features:
-  - {fileID: 2624728390969704943}
-  - {fileID: 3714630803482694596}
-  - {fileID: -3241769401479372190}
-  - {fileID: 5118605123291231670}
-  - {fileID: 6612283629567125903}
-  - {fileID: -7076820636337947843}
-  - {fileID: 4591960016107879432}
-  - {fileID: -2729654621548052752}
-  - {fileID: -8238165982797073749}
-  - {fileID: -1160485720743343250}
-  - {fileID: 4217642743288491769}
-  - {fileID: 7695472280757698861}
-  - {fileID: -3199647183226584090}
-  - {fileID: -2403028484242099099}
-  - {fileID: 7404780424406648802}
-  - {fileID: -8008614053212679565}
-  - {fileID: -6687603632291209142}
-  - {fileID: -3071618820888781818}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &-6727713026781438068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 4e314dfef9af0904e80129bcc0a79361, type: 3}
   m_Name: HandTracking Metro
   m_EditorClassIdentifier: 
@@ -187,6 +159,7 @@ MonoBehaviour:
   priority: -100
   required: 0
 --- !u!114 &-6687603632291209142
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,7 +283,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-5424681989399921559
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,7 +305,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-5078755087125838971
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,6 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
   m_Name: MicrosoftHandInteraction Metro
   m_EditorClassIdentifier: 
@@ -351,6 +329,7 @@ MonoBehaviour:
   priority: 0
   required: 0
 --- !u!114 &-4981164928335747631
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,7 +420,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-3241769401479372190
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -453,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
   m_Name: EyeGazeInteraction Standalone
   m_EditorClassIdentifier: 
+
   m_enabled: 0
   nameUi: Eye Gaze Interaction Profile
   version: 0.0.1
@@ -462,6 +444,7 @@ MonoBehaviour:
   priority: 0
   required: 0
 --- !u!114 &-3199647183226584090
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,7 +464,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &-3071618820888781818
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -490,6 +475,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
   m_Name: ValveIndexControllerProfile Standalone
   m_EditorClassIdentifier: 
@@ -502,6 +488,7 @@ MonoBehaviour:
   priority: 0
   required: 0
 --- !u!114 &-3024129517745652399
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -744,7 +731,9 @@ MonoBehaviour:
   extensionStrings:
   - XR_KHR_binding_modification
   - XR_EXT_dpad_binding
+
 --- !u!114 &2533022627783003909
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -804,6 +793,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
   forceThresholdLeft: 0.5
   forceThresholdReleaseLeft: 0.4
   centerRegionLeft: 0.5
@@ -818,6 +808,7 @@ MonoBehaviour:
   - XR_KHR_binding_modification
   - XR_EXT_dpad_binding
 --- !u!114 &4217642743288491769
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -826,6 +817,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: c4b862ee14fb479fbfe5fffe655d3ed3, type: 3}
   m_Name: MetaQuestTouchProControllerProfile Standalone
   m_EditorClassIdentifier: 
@@ -835,6 +827,7 @@ MonoBehaviour:
   featureIdInternal: com.unity.openxr.feature.input.metaquestpro
   openxrExtensionStrings: XR_FB_touch_controller_pro
   company: Unity
+
   priority: 0
   required: 0
 --- !u!114 &4591960016107879432
@@ -857,7 +850,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &4714341679271707580
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -866,6 +861,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+
   m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
   m_Name: EyeGazeInteraction Metro
   m_EditorClassIdentifier: 
@@ -874,6 +870,7 @@ MonoBehaviour:
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.eyetracking
   openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+
   company: Unity
   priority: 0
   required: 0
@@ -1068,7 +1065,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &7457157367262926137
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,9 +1087,11 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
   cacheSize: 1048576
   perThreadCacheSize: 51200
 --- !u!114 &7695472280757698861
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1110,7 +1111,9 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+
 --- !u!114 &7823170353155989761
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

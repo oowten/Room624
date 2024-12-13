@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dissolvable
+  - Able
   layers:
   - Default
   - TransparentFX
