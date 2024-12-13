@@ -46,7 +46,7 @@ public class SceneController : MonoBehaviour
     private IEnumerator SceneSequence()
     {
         // 1. �E���O�z���׳v���W��
-        yield return StartCoroutine(FadeSpotlight(0, 0.5f, spotlightFadeDuration));
+        yield return StartCoroutine(FadeSpotlight(0, 0.07f, spotlightFadeDuration));
         yield return new WaitForSeconds(delayAfterSpotlight);
 
         // 2. ��ܼv���ù��÷ǳƼ���
