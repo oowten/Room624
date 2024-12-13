@@ -615,6 +615,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &646403026 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3564025978497677787, guid: 1fd6d4cc51a386b4688d6948320d1fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1845102830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &752373851
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b5b0b4b9d19214fadb89e40f444d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotlightRenderer: {fileID: 1720791916}
+  spotlightRenderer1: {fileID: 1720791916}
+  spotlightRenderer2: {fileID: 646403026}
   shaderOpacityProperty: _opacity
   spotlightFadeDuration: 0.7
   videoScreen: {fileID: 2057294305}
@@ -655,6 +662,8 @@ MonoBehaviour:
   delayAfterSpotlight: 2
   delayAfterVideoStart: 2
   delayAfterVideoEnd: 2
+  delayFor1Spotlight: 5
+  delayForSecondSpotlight: 1
 --- !u!4 &752373853
 Transform:
   m_ObjectHideFlags: 0
@@ -1898,7 +1907,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2063519787}
   - {fileID: 163975699}
   - {fileID: 1717531368}
   - {fileID: 1655804028}
@@ -2925,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 3059363404502374414, guid: 1fd6d4cc51a386b4688d6948320d1fa0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3132,7 +3140,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8db32b8a73d0ab141b991a113502c110, type: 2}
+      objectReference: {fileID: 2100000, guid: f189a57a9030bc141be3512d98b6c8dc, type: 2}
     - target: {fileID: 919132149155446097, guid: 02ff1687a7f95424aa05101acb85e911,
         type: 3}
       propertyPath: m_Name
@@ -3588,7 +3596,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 209368910}
-  m_Father: {fileID: 1663494438}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3700,3 +3708,4 @@ SceneRoots:
   - {fileID: 1568517584}
   - {fileID: 1453799975}
   - {fileID: 1913544384}
+  - {fileID: 2063519787}
