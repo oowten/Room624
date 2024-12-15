@@ -49,7 +49,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _edge: 9.87
-    - _opacity: -0.03
+    - _opacity: 0.29
     - _use: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
