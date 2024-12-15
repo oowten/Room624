@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-
 public class SceneController : MonoBehaviour
 {
     [Header("Spotlight Settings")]
@@ -17,14 +16,16 @@ public class SceneController : MonoBehaviour
     public float videoFadeDuration = 2f; // 影片淡入/淡出時間
 
     [Header("Trash Bin Settings")]
+    public GameObject trashBin; // 垃圾桶物件
+    public GameObject trashBinContents; // 垃圾桶內部內容
     public Animator trashBinAnimator; // 垃圾桶動畫
 
     [Header("Delays Between Steps")]
     public float delayAfterSpotlight = 2f; // 第一個 spotlight 出現後的延遲
     public float delayAfterVideoStart = 2f; // 影片開始播放後的延遲
     public float delayAfterVideoEnd = 2f; // 影片結束後的延遲
-    public float delayFor1Spotlight = 2f;
     public float delayForSecondSpotlight = 1f; // 第二個 spotlight 出現的延遲
+    public float delayForTrash = 5f;
 
     private Material videoMaterial; // 影片材質
     private bool hasPlayed = false; // 是否已經執行過場景序列
@@ -40,19 +41,19 @@ public class SceneController : MonoBehaviour
         // 確保 spotlight 初始透明度為 0
         SetSpotlightOpacity(spotlightRenderer1, 0);
         SetSpotlightOpacity(spotlightRenderer2, 0);
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !hasPlayed)
-        {
-            hasPlayed = true;
-            StartCoroutine(SceneSequence()); // 開始執行場景序列
-        }
+        // 隱藏垃圾桶及其內容
+        trashBin.SetActive(false);
+        trashBinContents.SetActive(false);
+
+        // 進入場景後自動執行場景序列
+        StartCoroutine(SceneSequence());
     }
 
     private IEnumerator SceneSequence()
     {
+        if (hasPlayed) yield break; // 防止重复调用
+        hasPlayed = true;
         // 1. 第一個 spotlight 淡入
         yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0, 0.07f, spotlightFadeDuration));
         yield return new WaitForSeconds(delayAfterSpotlight);
@@ -67,25 +68,31 @@ public class SceneController : MonoBehaviour
         videoPlayer.Play(); // 開始播放影片
         yield return new WaitForSeconds(delayAfterVideoStart);
 
-        // 3. 第一個 spotlight 淡出
-        yield return new WaitForSeconds(delayFor1Spotlight);
-        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0.07f, 0, spotlightFadeDuration));
+        yield return new WaitForSeconds(delayForTrash);
+        // 顯示垃圾桶及其內容
+        trashBin.SetActive(true); // 顯示垃圾桶
+        trashBinContents.SetActive(true); // 顯示垃圾桶內部內容
 
-        // 5. 等待影片播放結束
+        // 等待影片播放結束
         while (videoPlayer.isPlaying)
         {
             yield return null;
         }
         yield return new WaitForSeconds(delayAfterVideoEnd);
 
+        // 第一個 spotlight 淡出並銷毀
+        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0.07f, 0, spotlightFadeDuration));
+        Destroy(spotlightRenderer1.gameObject); // 銷毀第一個 spotlight 的物件
+
         // 淡出影片
         yield return StartCoroutine(FadeVideoAlpha(1, 0, videoFadeDuration));
         videoScreen.SetActive(false); // 隱藏影片物件
-        // 4. 延遲一秒後讓第二個 spotlight 淡入
+
+        // 第二個 spotlight 淡入
         yield return new WaitForSeconds(delayForSecondSpotlight);
         yield return StartCoroutine(FadeSpotlight(spotlightRenderer2, 0, 0.07f, spotlightFadeDuration));
 
-        // 7. 觸發垃圾桶動畫
+
         trashBinAnimator.SetBool("isOpen", true);
     }
 

@@ -119,6 +119,19 @@ public class DissolvingController : MonoBehaviour
                 }
                 yield return new WaitForSeconds(refreshRate);
             }
+
+            // 確保物件完全透明
+            for (int i = 0; i < skinnedMaterials.Length; i++)
+            {
+                skinnedMaterials[i].SetFloat("_DissolveAmount", 1.0f);
+            }
+        }
+
+
+        // 隱藏物件形體（禁用 Renderer 或者刪除）
+        if (skinnedMesh != null)
+        {
+            skinnedMesh.enabled = false; // 禁用 Mesh Renderer，讓物件不可見
         }
 
         // 停止粒子效果
@@ -129,12 +142,24 @@ public class DissolvingController : MonoBehaviour
             particleSystem.Stop();
         }
 
-        // 延遲幾秒後轉場
-        float transitionDelay = 2f; // 設定轉場延遲的時間
-        yield return new WaitForSeconds(transitionDelay);
 
-        // 開始轉場
-        sceneTransitionManager.TransitionToScene("YourTargetSceneName");
+
+        // 延遲幾秒後刪除自身
+        float destroyDelay = 2f; // 設定刪除自身的延遲時間（確保粒子效果播放完全）
+        yield return new WaitForSeconds(destroyDelay);
+
+        Debug.Log("刪除執行動畫的物件");
+        Destroy(gameObject); // 刪除當前執行動畫和 Dissolve 的物件本身
+
+        // 轉場
+        if (sceneTransitionManager != null)
+        {
+            sceneTransitionManager.TransitionToScene(); // 呼叫場景轉場方法
+        }
+        else
+        {
+            Debug.LogError("轉場管理器 (SceneTransitionManager) 未設置！");
+        }
 
         isDissolving = false;
     }
