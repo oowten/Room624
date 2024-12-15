@@ -50,7 +50,7 @@ Material:
     - _QueueOffset: 0
     - _edge: 9.87
     - _opacity: -0.03
-    - _use: 1
+    - _use: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

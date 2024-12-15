@@ -1,39 +1,39 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // ¥Î©ó³õ´ºÂà³õ
+using UnityEngine.SceneManagement; // ç”¨æ–¼å ´æ™¯è½‰å ´
 using System.Collections;
 
 public class DissolvingController : MonoBehaviour
 {
     public SkinnedMeshRenderer skinnedMesh;
-    public ParticleSystem particleSystem; // ²É¤l¨t²Î
+    public ParticleSystem particleSystem; // ç²’å­ç³»çµ±
     public float dissolveRate = 0.0125f;
     public float refreshRate = 0.025f;
     private Material[] skinnedMaterials;
 
     private bool isDissolving = false;
 
-    private ParticleSystem.EmissionModule emissionModule; // ²É¤lµo®g³]©w
+    private ParticleSystem.EmissionModule emissionModule; // ç²’å­ç™¼å°„è¨­å®š
 
-    [Header("¥i½Õ¾ãªº²É¤l¼Æ¶q")]
+    [Header("å¯èª¿æ•´çš„ç²’å­æ•¸é‡")]
     [Range(1, 1000)]
-    public float particleCount = 100f; // ²É¤l¼Æ¶q
+    public float particleCount = 100f; // ç²’å­æ•¸é‡
 
-    [Header("°Êµe¬ÛÃö³]©w")]
-    public Animator targetAnimator; // ¸j©wªº Animator
-    public string triggerName = "FlyyyTrigger"; // Ä²µo°Êµeªº Trigger ¦WºÙ
-    public float dissolveDelay = 2f; // °Êµe¼½©ñ«á©µ¿ğªº®É¶¡
+    [Header("å‹•ç•«ç›¸é—œè¨­å®š")]
+    public Animator targetAnimator; // ç¶å®šçš„ Animator
+    public string triggerName = "FlyyyTrigger"; // è§¸ç™¼å‹•ç•«çš„ Trigger åç¨±
+    public float dissolveDelay = 2f; // å‹•ç•«æ’­æ”¾å¾Œå»¶é²çš„æ™‚é–“
 
-    [Header("Âà³õºŞ²z¾¹")]
-    public SceneTransitionManager sceneTransitionManager; // Âà³õºŞ²z¾¹¤Ş¥Î
+    [Header("è½‰å ´ç®¡ç†å™¨")]
+    public SceneTransitionManager sceneTransitionManager; // è½‰å ´ç®¡ç†å™¨å¼•ç”¨
 
     void Start()
     {
-        // ªì©l¤Æ§÷½è
+        // åˆå§‹åŒ–æè³ª
         if (skinnedMesh != null)
         {
             skinnedMaterials = skinnedMesh.materials;
 
-            // «Ø¥ß§÷½èªº¿W¥ß¹ê¨Ò
+            // å»ºç«‹æè³ªçš„ç¨ç«‹å¯¦ä¾‹
             for (int i = 0; i < skinnedMaterials.Length; i++)
             {
                 skinnedMaterials[i] = new Material(skinnedMaterials[i]);
@@ -41,51 +41,51 @@ public class DissolvingController : MonoBehaviour
             skinnedMesh.materials = skinnedMaterials;
         }
 
-        // °±¤î²É¤l®ÄªG
+        // åœæ­¢ç²’å­æ•ˆæœ
         if (particleSystem != null)
         {
             particleSystem.Stop();
             emissionModule = particleSystem.emission;
         }
 
-        // ÀË¬d¬O§_¦³¸j©w Animator
+        // æª¢æŸ¥æ˜¯å¦æœ‰ç¶å®š Animator
         if (targetAnimator == null)
         {
-            Debug.LogError("¥¼¸j©w Animator¡I½Ğ¦b Inspector ¤¤±N¥Ø¼Ğ GameObject ªº Animator ©ì¤J¡C");
+            Debug.LogError("æœªç¶å®š Animatorï¼è«‹åœ¨ Inspector ä¸­å°‡ç›®æ¨™ GameObject çš„ Animator æ‹–å…¥ã€‚");
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ª«Åé¶i¤JÄ²µo°Ï°ì: " + other.gameObject.name);
+        Debug.Log("ç‰©é«”é€²å…¥è§¸ç™¼å€åŸŸ: " + other.gameObject.name);
 
-        // ¦pªG¶i¤Jªºª«¥ó¨ã¦³¼ĞÅÒ "Able"
+        // å¦‚æœé€²å…¥çš„ç‰©ä»¶å…·æœ‰æ¨™ç±¤ "Able"
         if (!isDissolving && other.CompareTag("Able"))
         {
-            Debug.Log("¶}©l¼½©ñ°Êµe©M°õ¦æ©µ¿ğ®ÄªG");
+            Debug.Log("é–‹å§‹æ’­æ”¾å‹•ç•«å’ŒåŸ·è¡Œå»¶é²æ•ˆæœ");
 
-            // ¼½©ñ°Êµe
+            // æ’­æ”¾å‹•ç•«
             if (targetAnimator != null)
             {
-                Debug.Log("¼½©ñ Flyyy °Êµe");
+                Debug.Log("æ’­æ”¾ Flyyy å‹•ç•«");
                 if (targetAnimator.HasParameterOfType(triggerName, AnimatorControllerParameterType.Trigger))
                 {
                     targetAnimator.SetTrigger(triggerName);
                 }
                 else
                 {
-                    Debug.LogError($"Animator ¤¤¯Ê¤Ö¦W¬° {triggerName} ªº Trigger °Ñ¼Æ¡I");
+                    Debug.LogError($"Animator ä¸­ç¼ºå°‘åç‚º {triggerName} çš„ Trigger åƒæ•¸ï¼");
                 }
             }
             else
             {
-                Debug.LogError("ª«¥ó¯Ê¤Ö Animator ²Õ¥ó¡AµLªk¼½©ñ°Êµe¡I");
+                Debug.LogError("ç‰©ä»¶ç¼ºå°‘ Animator çµ„ä»¶ï¼Œç„¡æ³•æ’­æ”¾å‹•ç•«ï¼");
             }
 
-            // ¶}©l©µ¿ğ«áªº Dissolve ®ÄªG
+            // é–‹å§‹å»¶é²å¾Œçš„ Dissolve æ•ˆæœ
             StartCoroutine(DelayedDissolve());
 
-            // ©µ¿ğ«áÅı¶i¤Jªº Able ª«¥ó®ø¥¢
+            // å»¶é²å¾Œè®“é€²å…¥çš„ Able ç‰©ä»¶æ¶ˆå¤±
             StartCoroutine(DelayedDestroy(other.gameObject, dissolveDelay));
         }
     }
@@ -94,18 +94,18 @@ public class DissolvingController : MonoBehaviour
     {
         isDissolving = true;
 
-        // µ¥«İ«ü©wªº©µ¿ğ®É¶¡
+        // ç­‰å¾…æŒ‡å®šçš„å»¶é²æ™‚é–“
         yield return new WaitForSeconds(dissolveDelay);
 
-        // ¼½©ñ²É¤l®ÄªG
+        // æ’­æ”¾ç²’å­æ•ˆæœ
         if (particleSystem != null)
         {
-            Debug.Log("¼½©ñ²É¤l®ÄªG");
+            Debug.Log("æ’­æ”¾ç²’å­æ•ˆæœ");
             particleSystem.Play();
             emissionModule.rateOverTime = particleCount;
         }
 
-        // ¶}©l Dissolve ®ÄªG
+        // é–‹å§‹ Dissolve æ•ˆæœ
         if (skinnedMaterials.Length > 0)
         {
             float counter = 0;
@@ -119,41 +119,66 @@ public class DissolvingController : MonoBehaviour
                 }
                 yield return new WaitForSeconds(refreshRate);
             }
+
+            // ç¢ºä¿ç‰©ä»¶å®Œå…¨é€æ˜
+            for (int i = 0; i < skinnedMaterials.Length; i++)
+            {
+                skinnedMaterials[i].SetFloat("_DissolveAmount", 1.0f);
+            }
         }
 
-        // °±¤î²É¤l®ÄªG
+
+        // éš±è—ç‰©ä»¶å½¢é«”ï¼ˆç¦ç”¨ Renderer æˆ–è€…åˆªé™¤ï¼‰
+        if (skinnedMesh != null)
+        {
+            skinnedMesh.enabled = false; // ç¦ç”¨ Mesh Rendererï¼Œè®“ç‰©ä»¶ä¸å¯è¦‹
+        }
+
+        // åœæ­¢ç²’å­æ•ˆæœ
         if (particleSystem != null)
         {
             emissionModule.rateOverTime = 0f;
-            Debug.Log("°±¤î²É¤l®ÄªG");
+            Debug.Log("åœæ­¢ç²’å­æ•ˆæœ");
             particleSystem.Stop();
         }
 
-        // ©µ¿ğ´X¬í«áÂà³õ
-        float transitionDelay = 2f; // ³]©wÂà³õ©µ¿ğªº®É¶¡
-        yield return new WaitForSeconds(transitionDelay);
 
-        // ¶}©lÂà³õ
-        sceneTransitionManager.TransitionToScene("YourTargetSceneName");
+
+        // å»¶é²å¹¾ç§’å¾Œåˆªé™¤è‡ªèº«
+        float destroyDelay = 2f; // è¨­å®šåˆªé™¤è‡ªèº«çš„å»¶é²æ™‚é–“ï¼ˆç¢ºä¿ç²’å­æ•ˆæœæ’­æ”¾å®Œå…¨ï¼‰
+        yield return new WaitForSeconds(destroyDelay);
+
+        Debug.Log("åˆªé™¤åŸ·è¡Œå‹•ç•«çš„ç‰©ä»¶");
+        Destroy(gameObject); // åˆªé™¤ç•¶å‰åŸ·è¡Œå‹•ç•«å’Œ Dissolve çš„ç‰©ä»¶æœ¬èº«
+
+        // è½‰å ´
+        if (sceneTransitionManager != null)
+        {
+            sceneTransitionManager.TransitionToScene(); // å‘¼å«å ´æ™¯è½‰å ´æ–¹æ³•
+        }
+        else
+        {
+            Debug.LogError("è½‰å ´ç®¡ç†å™¨ (SceneTransitionManager) æœªè¨­ç½®ï¼");
+        }
 
         isDissolving = false;
     }
 
     IEnumerator DelayedDestroy(GameObject targetObject, float delay)
     {
-        // µ¥«İ«ü©wªº®É¶¡
+        // ç­‰å¾…æŒ‡å®šçš„æ™‚é–“
         yield return new WaitForSeconds(delay);
 
-        // §R°£¶i¤Jªºª«¥ó
+        // åˆªé™¤é€²å…¥çš„ç‰©ä»¶
         if (targetObject != null)
         {
-            Debug.Log($"§R°£ª«¥ó: {targetObject.name}");
+            Debug.Log($"åˆªé™¤ç‰©ä»¶: {targetObject.name}");
             Destroy(targetObject);
         }
     }
 }
 
-// ÂX®i¤èªkÀË¬d Animator °Ñ¼Æ
+// æ“´å±•æ–¹æ³•æª¢æŸ¥ Animator åƒæ•¸
 public static class AnimatorExtensions
 {
     public static bool HasParameterOfType(this Animator animator, string paramName, AnimatorControllerParameterType type)
@@ -166,3 +191,4 @@ public static class AnimatorExtensions
         return false;
     }
 }
+

@@ -5,38 +5,64 @@ using System.Collections;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public Image fadeImage; // ¥ş«Ì¶Â¦â¹Ï¹³¤Ş¥Î
-    public float fadeDuration = 1f; // ²H¤J²H¥X®É¶¡
+    public Image fadeImage; // å…¨å±é»‘è‰²åœ–åƒå¼•ç”¨
+    public float fadeDuration = 1f; // æ·¡å…¥æ·¡å‡ºæ™‚é–“
+    public string targetSceneName; // ç›®æ¨™å ´æ™¯åç¨±ï¼ˆå¯åœ¨ Inspector å¡«å¯«ï¼‰
 
     private void Start()
     {
-        // ½T«O³õ´º¥[¸ü®É¥ß§Y°õ¦æ²H¤J®ÄªG
-        StartCoroutine(Fade(0f));
+        // ç¢ºä¿å ´æ™¯åŠ è¼‰æ™‚ç«‹å³åŸ·è¡Œæ·¡å…¥æ•ˆæœ
+        if (fadeImage != null)
+        {
+            StartCoroutine(Fade(0f));
+        }
+        else
+        {
+            Debug.LogError("fadeImage æœªè¨­ç½®ï¼Œè«‹åœ¨ Inspector ä¸­ç¶å®šä¸€å€‹å…¨å±çš„ UI Imageã€‚");
+        }
     }
 
-    public void TransitionToScene(string sceneName)
+    public void TransitionToScene()
     {
-        StartCoroutine(FadeOutAndLoadScene("vr"));
+        if (!string.IsNullOrEmpty(targetSceneName))
+        {
+            StartCoroutine(FadeOutAndLoadScene(targetSceneName));
+        }
+        else
+        {
+            Debug.LogError("ç›®æ¨™å ´æ™¯åç¨±æœªè¨­ç½®ï¼Œè«‹åœ¨ Inspector ä¸­å¡«å¯«å ´æ™¯åç¨±ï¼");
+        }
     }
 
     private IEnumerator FadeOutAndLoadScene(string sceneName)
     {
-        // ²H¥X
-        yield return StartCoroutine(Fade(1f));
-
-        // ¥[¸ü³õ´º
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("vr");
-        while (!asyncLoad.isDone)
+        // æ·¡å‡º
+        if (fadeImage != null)
         {
-            yield return null; // µ¥«İ³õ´º¥[¸ü§¹¦¨
+            yield return StartCoroutine(Fade(1f));
         }
 
-        // ²H¤J
-        yield return StartCoroutine(Fade(0f));
+        // åŠ è¼‰å ´æ™¯
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncLoad.isDone)
+        {
+            yield return null; // ç­‰å¾…å ´æ™¯åŠ è¼‰å®Œæˆ
+        }
+
+        // æ·¡å…¥
+        if (fadeImage != null)
+        {
+            yield return StartCoroutine(Fade(0f));
+        }
     }
 
     private IEnumerator Fade(float targetAlpha)
     {
+        if (fadeImage == null)
+        {
+            yield break;
+        }
+
         Color color = fadeImage.color;
         float startAlpha = color.a;
         float time = 0f;
