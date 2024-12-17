@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dissolvable
   - Able
+  - Hand
   layers:
   - Default
   - TransparentFX
