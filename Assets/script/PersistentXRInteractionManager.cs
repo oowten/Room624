@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PersistentXRInteractionManager : MonoBehaviour
 {
@@ -6,14 +7,13 @@ public class PersistentXRInteractionManager : MonoBehaviour
 
     void Awake()
     {
-        // 確保只有一個 XR Interaction Manager 實例
         if (instance != null)
         {
-            Destroy(gameObject); // 刪除重複的物件
+            Destroy(gameObject); // 如果已存在，刪除重複的物件
             return;
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject); // 保留物件在場景切換時不被銷毀
+        DontDestroyOnLoad(gameObject); // 保留 Interaction Manager
     }
 }
