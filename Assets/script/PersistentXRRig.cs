@@ -29,17 +29,24 @@ public class XRRigPositionManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 找到當前場景的“RespawnPoint”
+        // 找到場景中的RespawnPoint
         GameObject respawnPoint = GameObject.Find("RespawnPoint");
-        if (respawnPoint != null)
+
+        // 確保只有一個xr rig
+        XRRigPositionManager existingRig = FindObjectOfType<XRRigPositionManager>();
+
+        if (respawnPoint != null && existingRig != null)
         {
-            Transform xrRigTransform = GameObject.Find("XR Rig").transform;
+            Transform xrRigTransform = existingRig.transform;
             xrRigTransform.position = respawnPoint.transform.position;
             xrRigTransform.rotation = respawnPoint.transform.rotation;
+
+            Debug.Log("XR Rig 重置到新場景的 RespawnPoint 位置");
         }
         else
         {
-            Debug.LogWarning("RespawnPoint not found in the scene!");
+            Debug.LogWarning("RespawnPoint or XR Rig not found in the scene!");
         }
     }
+
 }
