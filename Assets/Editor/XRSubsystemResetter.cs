@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.XR.Management;
+using UnityEngine.XR.Interaction.Toolkit;
+
 
 [InitializeOnLoad]
 public class XRSubsystemResetter
@@ -9,7 +11,8 @@ public class XRSubsystemResetter
     {
         EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
     }
-    private static void OnPlayModeStateChanged(PlayModeStateChange state)
+
+        private static void OnPlayModeStateChanged(PlayModeStateChange state)
     {
         if (state == PlayModeStateChange.ExitingPlayMode)
         {
