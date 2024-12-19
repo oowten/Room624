@@ -8,10 +8,13 @@ public class SceneSwitchOnTouchToMemory : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("觸發 OnTriggerEnter，觸發物件的 Tag 為：" + other.tag);
+
         if (other.CompareTag(handTag))
         {
-            // 切換到目標場景
+            Debug.Log("觸發成功，切換到場景 memory");
             SceneManager.LoadScene("memory");
         }
     }
+
 }
