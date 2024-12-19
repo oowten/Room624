@@ -1778,6 +1778,7 @@ GameObject:
   - component: {fileID: 374180776}
   - component: {fileID: 374180775}
   - component: {fileID: 374180774}
+  - component: {fileID: 374180777}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Hand
@@ -2129,6 +2130,30 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &374180777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374180772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deb5103ecfc94eb89d366e7454a1d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Select
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d8ee7fc5-b7df-4193-98c1-1d1f20670351
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1 &376449535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,6 +3097,7 @@ GameObject:
   - component: {fileID: 472192497}
   - component: {fileID: 472192496}
   - component: {fileID: 472192495}
+  - component: {fileID: 472192498}
   m_Layer: 0
   m_Name: Left Controller
   m_TagString: Hand
@@ -3423,6 +3449,30 @@ MonoBehaviour:
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &472192498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472192493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deb5103ecfc94eb89d366e7454a1d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Select
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c599613b-a46e-4864-a153-14867f83928f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1 &507102212
 GameObject:
   m_ObjectHideFlags: 0
