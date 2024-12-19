@@ -13,7 +13,7 @@ public class SceneSwitchOnTouchToMemory : MonoBehaviour
         if (other.CompareTag(handTag))
         {
             Debug.Log("觸發成功，切換到場景 memory");
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("memory");
         }
     }
 
