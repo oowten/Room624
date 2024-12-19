@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneSwitchOnTouchToCigarette : MonoBehaviour
+public class SceneSwitchOnTouchToMemory : MonoBehaviour
 {
     // 給手一個tag（例如“Hand”）
     [SerializeField] private string handTag = "Hand";
