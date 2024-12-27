@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
     public Animator trashBinAnimator; // 垃圾桶動畫
 
     [Header("Delays Between Steps")]
-    public float delayAfterSpotlight = 2f; // 第一個 spotlight 出現後的延遲
+    public float delayAfterSpotlight = 5f; // 第一個 spotlight 出現後的延遲
     public float delayAfterVideoStart = 2f; // 影片開始播放後的延遲
     public float delayAfterVideoEnd = 2f; // 影片結束後的延遲
     public float delayForSecondSpotlight = 1f; // 第二個 spotlight 出現的延遲
@@ -55,7 +55,7 @@ public class SceneController : MonoBehaviour
         if (hasPlayed) yield break; // 防止重复调用
         hasPlayed = true;
         // 1. 第一個 spotlight 淡入
-        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0, 0.07f, spotlightFadeDuration));
+        yield return StartCoroutine(FadeSpotlight(spotlightRenderer1, 0, 0.03f, spotlightFadeDuration));
         yield return new WaitForSeconds(delayAfterSpotlight);
 
         // 2. 顯示影片畫面並準備播放
